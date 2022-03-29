@@ -1,0 +1,14 @@
+{
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
+    },
+    "functions": {
+        "runtime": "nodejs16"
+    },
+    "emulators": {
+        "hosting": {
+            "port": 5004
+        }
+    }
+}
