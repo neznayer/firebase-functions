@@ -58,15 +58,12 @@ exports.getProductById = functions.https.onRequest(async (req, res) => {
             );
 
             const result = response.data.data.find(
-                (p) => p.id === req.query.id && 
+                (p) => p.id === req.query.id && !p.is_locked && p.visible
             );
             if (result) {
-
                 return res.status(200).json(result);
-
-            } 
-                return res.status(404).json({ message: "Product not found" });
-            
+            }
+            return res.status(404).json({ message: "Product not found" });
         } catch (error) {
             functions.logger.error(error);
             return res.status(500).json({
