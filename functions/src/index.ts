@@ -19,14 +19,15 @@ exports.getProducts = functions.https.onRequest(async (req, res) => {
         message: "Not allowed",
       });
     }
+
     try {
       const response = await axios.get(
-          `${process.env.PRINTIFY_API_URL}/
-          shops/${process.env.PRINTIFY_SHOP_ID}/products.json`,
+          `${process.env.PRINTIFY_API_URL}/` +
+          `shops/${process.env.PRINTIFY_SHOP_ID}/products.json`,
           {
             headers: {
               "Authorization": `Bearer ${process.env.PRINTIFY_API_TOKEN}`,
-              "Content-Type": "application/json;charset=utf-8",
+              "Content-Type": "application/json",
               "User-Agent": "Node.js",
             },
           }
@@ -51,8 +52,8 @@ exports.getProductById = functions.https.onRequest(async (req, res) => {
     }
     try {
       const response = await axios.get(
-          `${process.env.PRINTIFY_API_URL}/
-          shops/${process.env.PRINTIFY_SHOP_ID}/products.json`,
+          `${process.env.PRINTIFY_API_URL}/shops/
+          ${process.env.PRINTIFY_SHOP_ID}/products.json`,
           {
             headers: {
               "Authorization": `Bearer ${process.env.PRINTIFY_API_TOKEN}`,
